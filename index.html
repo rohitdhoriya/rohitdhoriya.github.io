@@ -34,6 +34,7 @@
       border-radius: 8px;
       font-size: 18px;
       transition: 0.3s;
+      cursor: pointer;
     }
     .btn:hover {
       background: #005f88;
@@ -52,25 +53,51 @@
   </header>
 
   <div class="container">
-    <a href="https://t.me/dekteraho" class="btn" target="_blank">🎬 Movie</a>
-    <a href="https://t.me/followformoreadult" class="btn" target="_blank">🔞 18+ Video</a>
-    <a href="https://t.me/amvhub001" class="btn" target="_blank">🎭 Anime</a>
-    <a href="https://t.me/modeapk001" class="btn" target="_blank">📱 Mod APK</a>
+    <div class="btn" data-link="https://t.me/dekteraho">🎬 Movie</div>
+    <div class="btn" data-link="https://t.me/followformoreadult">🔞 18+ Video</div>
+    <div class="btn" data-link="https://t.me/amvhub001">🎭 Anime</div>
+    <div class="btn" data-link="https://t.me/modeapk001">📱 Mod APK</div>
   </div>
 
-    <footer>
+  <footer>
     <p>🔥 Enjoy and Join All Groups 🔥</p>
-		
-    <div id="adsterra">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '4676d62f0e5049d768bf63b6957a4404',
-                'format' : 'iframe',
-                'height' : 50,
-                'width' : 320,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/4676d62f0e5049d768bf63b6957a4404/invoke.js"></script>
+
+    <!-- Banner ad -->
+    <div id="banner-ad" style="margin-top: 20px;">
+      <script type="text/javascript">
+        atOptions = {
+          'key' : '4676d62f0e5049d768bf63b6957a4404',
+          'format' : 'iframe',
+          'height' : 50,
+          'width' : 320,
+          'params' : {}
+        };
+      </script>
+      <script type="text/javascript" src="//www.highperformanceformat.com/4676d62f0e5049d768bf63b6957a4404/invoke.js"></script>
     </div>
-	</footer>
+  </footer>
+
+  <script>
+    // Popunder URL
+    const adLink = "//pl27523430.effectivecpmrate.com/98/ee/33/98ee331ba9c7d49bc4f8c5e2146215e4.js";
+
+    document.querySelectorAll('.btn').forEach(btn => {
+      let clicked = false;
+      btn.addEventListener('click', function() {
+        if (!clicked) {
+          // First click: open Popunder ad script in new window
+          let adWindow = window.open('', '_blank');
+          adWindow.document.write('<scr' + 'ipt type="text/javascript" src="' + adLink + '"></scr' + 'ipt>');
+          adWindow.document.close();
+          alert("Ad opened, click again to join group.");
+          clicked = true;
+        } else {
+          // Second click: open Telegram link
+          window.open(this.dataset.link, '_blank');
+          clicked = false;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
